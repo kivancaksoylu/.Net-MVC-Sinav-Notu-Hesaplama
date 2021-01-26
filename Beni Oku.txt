@@ -1,0 +1,43 @@
+Uygulamanın Çalışması İçin Gerekli Programlar:
+--Visual Studio(2019 ve Üstü Sürüm Önerilir)
+--SQL Server Express
+--SQL Server Management Studio
+--SQL Server Configuration Manager(Zorunlu Değildir)
+
+Uygulamayı Çalıştırmadan Önce Yapılması Gerekenler:
+-Bu adımların düzgün uygulanabilmesi için indirilen bütün programları ingilizce dil seçeneğini seçerek yüklemeniz önerilir.
+-Visual Studio Installerı bilgisayarınıza yükleyin ve onu kullanarak "ASP.NET ve web geliştirme" paketini yükleyin.
+-SQL Server Express i indirin ve bilgisayarınıza kurun, kurulum sonunda size kurulan local serverın adı verilecektir,
+ o adı biryere not alın.
+-SQL Server Management Studio indirin ve kurun, programı açtığınzda SQL Server Express ten aldığınız server ismiyle servera
+ giriş yapın, önünüze gelen ekranda solda klasörler görünecektir bunlardan database klasörüne sağ tıklayın ve "Import Data-tier Apllication.."
+ seçeneğine tıklayın.
+ Önünüze gelen ekranda "Import from local disk" seçeneğini seçin ve browse a tıklayın burda proje dosyasının içinde verilen "okul.bacpac" dosyasını seçin
+ next e tıklayın ve "New database name:" okul yazın, bundan sonra next e tıklayarak bir değişiklik yapmadan ilerleyin.
+-Eğer serverinizin adını unuttuysanız veya serverınıız istediğiniz zaman açıp kapatmak istiyorsanız Sql Server Configuration Manager programını yükleyebilirsiniz.
+
+Uygulamanın Çalışması İçin Yapılması Gerekenler:
+Uygulamayı çalıştırmak için proje klasöründeki "Proje.sln" i açınız.
+Uygulamayı Visual Studioda açtığınızda çalışabilmesi için önce uygulamayı kendi serverınıza bağlamanız
+gerekmektedir bunun için ekranın sağ tarafında Solution Explorer penceresindeki dosyalardan "Web.config" 
+dosyasını bulun ve çift tıklayın, Visual studio size "Web.config" dosyasının içindeki kodları gösterecektir
+bu kodlar arasında "<add name="okulEntities" connectionString" ile başlayan satırı bulun,bu satırın içindede
+"data source=" yazan kısmın hemen yanında uygulamanın kullanacağı serverın adı bulunur ve bu isim ";" iler biter.
+Örnek olarak "data source=./SQLSERVER;" şeklindedir sizin "./SQLSERVER" kısmını kendi kurduğunuz serverın adıyla 
+değiştirmeniz gerekir.
+Bu aşamadan sonra "Solution Explorer" da "Proje" ye sağ tıklayıp "Manage Nugget Packages"ı seçiniz.
+Yeni gelen ekranda "Installed" bölmesini açınız, burda uygulamanın kullandığı nugget paketleri göreceksiniz bu paketlerin
+herbirine tıklayıp teker teker güncelleyin, güncelleyemezseniz silip tekrar yüzkleyin.
+Özellikle "Microsoft.CodeDom.Provider.Dot.NetComplierPlatform" adlı paketi güncellemek yada tekrar yüklemeniz gerekir
+bunu yapmadığınız durumda uygulama büyük ihtimalle çalışmayacaktır.
+Bu iki aşamadanda sonra yukardaki yeşil "ISS Express" yazan butona basıp uygulamayı kullanmaya başlayabilirsiniz.
+
+Nasıl Kullanılır:
+Uygulamayı çalıştırdığınızda karşınıza giriş ekranı gelecektir. Öğretim görevlisi, fakülte, bölüm, ders, dönem eklemek ve ders atamak
+için uygulamaya admin olarak giriş yapmanız gerekmektedir. Bunun için --Sicil No:12345 Şifre:admin-- olarak giriş bilgilerini doldurunuz. Uygulamada gördüğünüz 
+"Derslerim ve Sınav Okutma" dışındaki ekranlarda gerekli bilgileri ekleyebilir güncelleyebilir veya silebilirsiniz.
+Derslere kazanım eklerken kazanımları alt alta yazmanız ve son kazanımdan sonra bir satır atlamanız gerekmektedir.
+Sınav okutma işlemini yapabilmeniz için öğretim görevlisi olarak giriş yapmanız gerekir.
+"Sınav Okutma" ekranında gerekli bilgiler ve dosyalar seçildikten sonra ve bir sonraki ekranda gerekli kazanımlar seçildikten sonra
+uygulama sizin için bir excel dosyası oluşturacaktır bu excel dosyasını açmak için "Derslerim"  ekranındaki tabloda sınav türüne tıklaynız.
+Uygulamanın öğrenci ve soru karşılaştırma için kullandığı Öğrenci ve Cevap dosya örnekleri uygulama klasöründe verilmiştir.
